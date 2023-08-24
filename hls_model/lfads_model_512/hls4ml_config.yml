@@ -1,0 +1,122 @@
+Backend: Vivado
+ClockPeriod: 5
+HLSConfig:
+  LayerName:
+    DecoderGRU:
+      ApplyResetGate: after
+      Direction: forward
+      Precision:
+        act: ap_fixed<32,16>
+        activation: fixed<8,1,RND_CONV,SAT>
+        bias: fixed<8,1>
+        recr_act: ap_fixed<32,16>
+        recurrent_activation: ufixed<8,0,RND_CONV,SAT>
+        recurrent_bias: fixed<8,1>
+        recurrent_weight: fixed<8,1>
+        result: ap_fixed<32,16>
+        shift: ap_fixed<32,16>
+        slope: ap_fixed<32,16>
+        state: fixed<8,1>
+        weight: fixed<8,1>
+      Strategy: Resource
+      Trace: true
+    Encoder_BidirectionalGRU:
+      ApplyResetGate: after
+      Direction: forward
+      Precision:
+        act: ap_fixed<32,16>
+        backward_bias: ap_fixed<32,16>
+        backward_recurrent_bias: ap_fixed<32,16>
+        backward_recurrent_weight: ap_fixed<32,16>
+        backward_weight: ap_fixed<32,16>
+        bias: fixed<8,1>
+        forward_bias: ap_fixed<32,16>
+        forward_recurrent_bias: ap_fixed<32,16>
+        forward_recurrent_weight: ap_fixed<32,16>
+        forward_weight: ap_fixed<32,16>
+        recr_act: ap_fixed<32,16>
+        recurrent_activation: ufixed<8,0,RND_CONV,SAT>
+        recurrent_bias: fixed<8,1>
+        recurrent_weight: fixed<8,1>
+        result: fixed<8,1,RND_CONV,SAT>
+        shift: ap_fixed<32,16>
+        slope: ap_fixed<32,16>
+        state: fixed<8,1>
+        weight: fixed<8,1>
+      Trace: true
+    active_bits:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+      Trace: true
+    active_bits0:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+      Trace: true
+    active_bits1:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+      Trace: true
+    active_bits2:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+      Trace: true
+    active_bits4:
+      Precision:
+        result: fixed<8,1,RND_CONV,SAT>
+      Trace: true
+    add:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+    dense_latent2:
+      Precision:
+        bias: fixed<8,1>
+        result: ap_fixed<32,16>
+        weight: fixed<8,1>
+      Trace: true
+    dense_latent2_linear:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+    dense_mean:
+      Precision:
+        bias: fixed<8,1>
+        result: ap_fixed<32,16>
+        weight: fixed<8,1>
+      Trace: true
+    dense_mean_linear:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+    input_1:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+    input_2:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+    nerual_dense:
+      Precision:
+        bias: fixed<8,1>
+        result: ap_fixed<32,16>
+        weight: fixed<8,1>
+      Trace: true
+    nerual_dense_linear:
+      Precision:
+        result: ap_fixed<32,16>
+      Trace: true
+  Model:
+    BramFactor: 1000000000
+    Precision: ap_fixed<32,16>
+    ReuseFactor: 1
+    Strategy: Latency
+    TraceOutput: false
+IOType: io_parallel
+InputData: null
+KerasModel: !keras_model './hls_model/lfads_model_512/keras_model.h5'
+OutputDir: ./hls_model/lfads_model_512
+OutputPredictions: null
+Part: xc7z020clg400-1
+ProjectName: myproject
+Stamp: 96E28fbC

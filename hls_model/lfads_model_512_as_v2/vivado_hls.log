@@ -40994,3 +40994,12 @@ INFO: [SIM 211-3] *************** CSIM finish ***************
 ***** C/RTL SYNTHESIS *****
 INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
 INFO: [HLS 200-10] Analyzing design file 'firmware/myproject.cpp' ... 
+WARNING: [HLS 200-40] No /home/hisky/lfads_impl/hls_model/lfads_model_512_as_v2/myproject_prj/solution1/solution1.aps file found.
+Dataflow strict check failed
+    while executing
+"source build_prj.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel \#0 [list source $arg] "
+
+INFO: [Common 17-206] Exiting vivado_hls at Fri Aug 25 01:03:33 2023...

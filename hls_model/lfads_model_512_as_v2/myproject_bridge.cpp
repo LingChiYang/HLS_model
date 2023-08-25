@@ -25,6 +25,17 @@ void allocate_trace_storage(size_t element_size) {
     nnet::trace_enabled = true;
     nnet::trace_outputs = new std::map<std::string, void *>;
     nnet::trace_type_size = element_size;
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("Encoder_BidirectionalGRU", (void *) malloc(N_OUT_2 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("active_bits0", (void *) malloc(N_OUT_2 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("dense_mean", (void *) malloc(N_LAYER_4 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("dense_latent2", (void *) malloc(N_LAYER_6 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("active_bits1", (void *) malloc(N_LAYER_4 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("active_bits", (void *) malloc(N_LAYER_6 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("add", (void *) malloc(N_LAYER_4 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("DecoderGRU", (void *) malloc(N_TIME_STEPS_12*N_OUT_12 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("active_bits2", (void *) malloc(N_TIME_STEPS_12*N_OUT_12 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("nerual_dense", (void *) malloc(N_OUTPUTS_17*N_FILT_17 * element_size)));
+    nnet::trace_outputs->insert(std::pair<std::string, void *>("active_bits4", (void *) malloc(N_LAYER_1_14*N_LAYER_2_14 * element_size)));
 }
 
 void free_trace_storage() {

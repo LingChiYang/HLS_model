@@ -341,6 +341,7 @@ void copy_data(std::vector<src_T> src, hls::stream<dst_T> dst[chan]) {
     int count = 0;
     for (typename std::vector<src_T>::const_iterator i = in_begin; i != in_end; ++i) {
         dst_T dst_pack = dst_T(*i);
+        std::cout << "dst_pack: " << dst_pack << std::endl;
         dst[count].write(dst_pack);
         if(count<chan-1)count++;
         else count=0;

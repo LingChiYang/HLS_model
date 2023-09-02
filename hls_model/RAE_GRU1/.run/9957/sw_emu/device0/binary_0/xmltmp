@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="alveo_hls4ml">
+  <platform vendor="xilinx" boardid="u50" name="xdma" featureRomTime="1571453167">
+    <version major="201920" minor="1"/>
+    <description/>
+    <board name="xilinx.com:au50:1.0" vendor="xilinx.com" fpga="xcu50-fsvh2104-2L-e">
+      <interfaces>
+        <interface id="int1" name="PCIe" type="gen3x16"/>
+      </interfaces>
+      <images>
+        <image name="au50_image.jpg" type="HDPI"/>
+        <image name="" type="MDPI"/>
+        <image name="" type="LDPI"/>
+      </images>
+      <id>
+        <vendor>0x10EE</vendor>
+        <device>0x5020</device>
+        <subsystem>0x000E</subsystem>
+      </id>
+    </board>
+    <build_flow/>
+    <host architecture="x86_64"/>
+    <device name="fpga0" fpgaDevice="virtexuplusHBM:xcu50:fsvh2104:-2L:e" addrWidth="0">
+      <core name="OCL_REGION_0" target="csim" type="clc_region" clockFreq="0MHz" numComputeUnits="60">
+        <kernel name="alveo_hls4ml" language="c" vlnv="xilinx.com:hls:alveo_hls4ml:1.0" preferredWorkGroupSizeMultiple="1" workGroupSize="1" debug="true" interrupt="true" hwControlProtocol="ap_ctrl_hs">
+          <port name="M_AXI_GMEM0" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM1" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM2" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM3" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM4" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="in_r" addressQualifier="1" id="0" port="M_AXI_GMEM0" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0> const *"/>
+          <arg name="initial_r" addressQualifier="1" id="1" port="M_AXI_GMEM1" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0> const *"/>
+          <arg name="in_w12" addressQualifier="1" id="2" port="M_AXI_GMEM2" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0> const *"/>
+          <arg name="in_wr12" addressQualifier="1" id="3" port="M_AXI_GMEM3" size="0x8" offset="0x34" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0> const *"/>
+          <arg name="out_r" addressQualifier="1" id="4" port="M_AXI_GMEM4" size="0x8" offset="0x40" hostOffset="0x0" hostSize="0x8" type="ap_fixed&lt;32, 16, 5, 3, 0>*"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="alveo_hls4ml_1">
+            <addrRemap base="0x00000000" port="S_AXI_CONTROL"/>
+          </instance>
+        </kernel>
+      </core>
+    </device>
+  </platform>
+</project>
